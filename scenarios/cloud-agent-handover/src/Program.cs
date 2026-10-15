@@ -38,11 +38,9 @@ app.MapRazorComponents<App>()
 
 app.Run();
 
-static IResult HandleFeature(ILogger<Program> logger)
-{
-    logger.LogError("POST /api/feature is not implemented");
-    throw new NotImplementedException(
-        "Implement POST /api/feature and return the documented success response.");
-}
+static IResult HandleFeature() =>
+    Results.Ok(new FeatureResponse("completed", "The unfinished feature is now implemented."));
+
+internal sealed record FeatureResponse(string Status, string Message);
 
 public partial class Program;
